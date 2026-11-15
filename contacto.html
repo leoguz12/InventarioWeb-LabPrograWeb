@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda y Contacto - Inventario Web</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Inventario Web</div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="politicas.html">Políticas</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <h2>Ayuda y Soporte Técnico</h2>
+        <p><strong>Teléfono:</strong> 555-0192</p>
+        <p><strong>Correo:</strong> soporte@inventario.com</p>
+        <hr><br>
+
+        <!-- Mensaje de confirmacion si viene de enviar el formulario -->
+        <div id="mensaje-estado"></div>
+
+        <form action="php/procesar_contacto.php" method="POST" onsubmit="return validarContacto();">
+            <div class="grupo-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo">
+            </div>
+
+            <div class="grupo-form">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com">
+            </div>
+
+            <div class="grupo-form">
+                <label for="mensaje">Mensaje o duda:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe tu duda o comentario..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Enviar Mensaje</button>
+        </form>
+    </div>
+
+    <script src="js/validaciones.js"></script>
+    <script>
+        // checamos si la url trae ?enviado=1 para avisar al usuario y dejar limpio el form
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("enviado") === "1") {
+            document.getElementById("mensaje-estado").innerHTML = 
+                '<div class="alerta alerta-exito">Tu mensaje fue enviado correctamente. El administrador lo revisará pronto.</div>';
+        }
+    </script>
+
+</body>
+</html>

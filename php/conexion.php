@@ -2,7 +2,7 @@
 // datos de conexion local para xampp
 $servidor = "localhost";
 $usuario = "root";
-$password = "Guzle_120607"; // por defecto va vacia
+$password = ""; // por defecto va vacia
 $base_datos = "inventario_db";
 
 // creamos conexion
